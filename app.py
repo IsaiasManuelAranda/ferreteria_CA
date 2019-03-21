@@ -21,10 +21,16 @@ if ssl == True:
 
 urls = (
     '/', 'application.controllers.main.index.Index',
+
+    '/clientes', 'application.controllers.clientes.index.Index',
+    '/clientes/view/(.+)', 'application.controllers.clientes.view.View',
+    '/clientes/edit/(.+)', 'application.controllers.clientes.edit.Edit',
+    '/clientes/delete/(.+)', 'application.controllers.clientes.delete.Delete',
+    '/clientes/insert', 'application.controllers.clientes.insert.Insert',
     #'/api_table_name/?', 'application.api.table_name.api_table_name.Api_table_name',
 )
 
 if __name__ == "__main__":
     app = web.application(urls, globals())
-    web.config.debug = False
+    web.config.debug = True
     app.run()

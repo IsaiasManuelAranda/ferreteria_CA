@@ -16,7 +16,7 @@ class Api_clientes:
                 web.header('Content-Type', 'application/json')
                 return json.dumps(clientes_json)
             else:
-                # http://0.0.0.0:8080/api_clientes?user_hash=12345&action=get&id_cliente=1
+                # http://localhost:8080/api_clientes?user_hash=12345&action=get&id_cliente=1
                 result = config.model.get_clientes(int(id_cliente))
                 clientes_json = []
                 clientes_json.append(dict(result))
@@ -28,7 +28,7 @@ class Api_clientes:
             web.header('Content-Type', 'application/json')
             return json.dumps(clientes_json)
 
-# http://0.0.0.0:8080/api_clientes?user_hash=12345&action=put&id_cliente=1&product=nuevo&description=nueva&stock=10&purchase_price=1&price_sale=3&product_image=0
+# http://localhost:8080/api_clientes?user_hash=12345&action=put&id_cliente=1&product=nuevo&description=nueva&stock=10&purchase_price=1&price_sale=3&product_image=0
     def put(self, nombre,ape_pat,ape_mat,telefono,email):
         try:
             config.model.insert_clientes(nombre,ape_pat,ape_mat,telefono,email)
@@ -39,7 +39,7 @@ class Api_clientes:
             print "PUT Error {}".format(e.args)
             return None
 
-# http://0.0.0.0:8080/api_clientes?user_hash=12345&action=delete&id_cliente=1
+# http://localhost:8080/api_clientes?user_hash=12345&action=delete&id_cliente=1
     def delete(self, id_cliente):
         try:
             config.model.delete_clientes(id_cliente)
@@ -50,7 +50,7 @@ class Api_clientes:
             print "DELETE Error {}".format(e.args)
             return None
 
-# http://0.0.0.0:8080/api_clientes?user_hash=12345&action=update&id_cliente=1&product=nuevo&description=nueva&stock=10&purchase_price=1&price_sale=3&product_image=default.jpg
+# http://localhost:8080/api_clientes?user_hash=12345&action=update&id_cliente=1&nombre=Rodrigo&ape_pat=Rodriguez&ape_mat=Arana&telefono=7751661262&email=rodri_ara@gmail.com
     def update(self, id_cliente, nombre,ape_pat,ape_mat,telefono,email):
         try:
             config.model.edit_clientes(id_cliente,nombre,ape_pat,ape_mat,telefono,email)
